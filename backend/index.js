@@ -976,4 +976,4 @@ app.post('/contact', async (req, res) => {
     console.error('Error processing contact form submission:', err);
     return res.status(500).json({ error: 'Unable to submit contact form' });
   }
-});
+});});
