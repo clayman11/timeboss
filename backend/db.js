@@ -199,4 +199,7 @@ module.exports = {
   insertCrew,
   getJobs,
   insertJob,
+};module.exports = {
+  query: (...args) => client.query(...args),
+  initDb
 };
