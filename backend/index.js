@@ -898,7 +898,7 @@ app.get('/jobs/:id/invoice', authenticate, requireRoleIn(['admin', 'foreman', 'c
 });
 
 // Start the server
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 8080;
 // Catch‑all handler for unknown routes.  Returns a 404 JSON response.
 app.use((req, res) => {
   res.status(404).json({ error: 'Not Found' });
