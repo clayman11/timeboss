@@ -1,6 +1,7 @@
 const express = require('express');
 // Load environment variables from .env if present
 require('dotenv').config();
+const app = express();
 const helmet = require('helmet');
 const cors = require('cors');
 const fs = require('fs');
@@ -399,7 +400,6 @@ const jobs = jobsData;
 const users = usersData;
 const clients = clientsData;
 
-const app = express();
 // Apply security middlewares
 app.use(helmet());
 app.use(cors(corsOptions));
