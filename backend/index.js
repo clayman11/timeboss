@@ -9,7 +9,7 @@ const path = require('path');
 const crypto = require('crypto');
 const bcrypt = require('bcryptjs');
 const Stripe = require('stripe');
-const { Configuration, OpenAIApi } = require('openai');
+const { OpenAI } = require('openai');
 
 // Optional database integration.  If a DATABASE_URL is configured, the db module
 // connects to PostgreSQL and exposes helper methods.  If not, it falls back to
@@ -186,8 +186,9 @@ app.post('/billing/webhook', express.raw({ type: 'application/json' }), (req, re
 // --- AI Schedule Optimization ---
 let openaiClient = null;
 if (process.env.OPENAI_API_KEY) {
-  const config = new Configuration({ apiKey: process.env.OPENAI_API_KEY });
-  openaiClient = new OpenAIApi(config);
+  const openaiClient = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
 }
 
 app.post('/jobs/optimize', authenticate, requireRoleIn(['admin', 'foreman']), async (req, res) => {
